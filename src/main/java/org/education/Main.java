@@ -5,7 +5,15 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Random;
 
+/**
+ * Demonstrates heapsort functionality and comparisons between int[] and ArrayList.
+ */
 public class Main {
+    /**
+     * Entry point for the program. Demonstrates heapsort and array comparison.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         // Part 1: PriorityQueue practice (commented out after testing)
         /*
@@ -44,6 +52,11 @@ public class Main {
         System.out.println(arraysEqual ? "The int[] and ArrayList are identical." : "The int[] and ArrayList are different.");
     }
 
+    /**
+     * Sorts an array using heapsort.
+     *
+     * @param a The array to sort.
+     */
     public static void heapsort(int[] a) {
         PriorityQueue<Integer> heap = new PriorityQueue<>();
         for (int num : a) {
@@ -55,6 +68,12 @@ public class Main {
         }
     }
 
+    /**
+     * Generates an array of random integers.
+     *
+     * @param size Size of the array.
+     * @return The generated array.
+     */
     public static int[] generateRandomArray(int size) {
         Random rand = new Random();
         int[] array = new int[size];
@@ -64,6 +83,12 @@ public class Main {
         return array;
     }
 
+    /**
+     * Prints the elements of an array with a label.
+     *
+     * @param label Description of the output.
+     * @param array The array to print.
+     */
     public static void printArray(String label, int[] array) {
         System.out.println(label);
         for (int num : array) {
@@ -72,6 +97,13 @@ public class Main {
         System.out.println();
     }
 
+    /**
+     * Compares an int array with an ArrayList for equality.
+     *
+     * @param array The int array.
+     * @param list  The ArrayList.
+     * @return true if they are identical, false otherwise.
+     */
     public static boolean compareArrayAndList(int[] array, ArrayList<Integer> list) {
         if (array.length != list.size()) return false;
         for (int i = 0; i < array.length; i++) {
