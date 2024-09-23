@@ -1,30 +1,47 @@
 package org.education;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        // Part 1: PriorityQueue practice (commented out after testing)
+        /*
         PriorityQueue<Integer> heap = new PriorityQueue<>();
-
-        heap.add(10);
-        heap.add(30);
-        heap.add(20);
-        heap.add(5);
+        heap.add(40);
+        heap.add(55);
         heap.add(15);
+        heap.add(5);
+        heap.add(35);
 
-        System.out.println("Elements removed from PriorityQueue:");
         while (!heap.isEmpty()) {
             System.out.println(heap.poll());
         }
+        */
 
-        // Commenting out the PriorityQueue code for the rest of the lab
-        // System.out.println("This code block can be commented out after testing.");
-
-        int[] array = {10, 30, 20, 5, 15};
+        // Part 3: Unsorted array and heapsort
+        int[] array = {12, 7, 19, 3, 5};
+        printArray("Unsorted array:", array);
         heapsort(array);
-        for (int num : array) {
-            System.out.print(num + " ");
+        printArray("Sorted array:", array);
+
+        // Part 4: Array of 1000 random integers
+        int[] largeArray = generateRandomArray(1000);
+        printArray("Unsorted large array:", largeArray);
+        heapsort(largeArray);
+        printArray("Sorted large array:", largeArray);
+
+        // Part 5: Comparing int[] with ArrayList
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for (int num : largeArray) {
+            arrayList.add(num);
         }
+
+        Collections.sort(arrayList);
+        boolean arraysEqual = compareArrayAndList(largeArray, arrayList);
+        System.out.println(arraysEqual ? "The int[] and ArrayList are identical." : "The int[] and ArrayList are different.");
     }
 
     public static void heapsort(int[] a) {
@@ -36,5 +53,30 @@ public class Main {
         while (!heap.isEmpty()) {
             a[i++] = heap.poll();
         }
+    }
+
+    public static int[] generateRandomArray(int size) {
+        Random rand = new Random();
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = rand.nextInt(1000);
+        }
+        return array;
+    }
+
+    public static void printArray(String label, int[] array) {
+        System.out.println(label);
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
+    public static boolean compareArrayAndList(int[] array, ArrayList<Integer> list) {
+        if (array.length != list.size()) return false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != list.get(i)) return false;
+        }
+        return true;
     }
 }
